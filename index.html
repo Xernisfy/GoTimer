@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 1px solid black;
+        padding: 4px;
+        height: 36px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.body.style.fontFamily = 'sans-serif';
+      function create(tag, parent) {
+        const element = document.createElement(tag);
+        (parent || document.body).appendChild(element);
+        return element;
+      }
+      const table = create('table');
+      [{ "activity": "Geht zusammen spazieren (2km)", "points": 3, "cooldown": 0 }, { "activity": "Gib deinem Kumpel einen Snack", "points": 1, "cooldown": 30 }, { "activity": "Spielt zusammen", "points": 1, "cooldown": 30 }, { "activity": "Kämpft gemeinsam", "points": 1, "cooldown": 30 }, { "activity": "Mach einen Schnappschuss", "points": 1, "cooldown": 30 }, { "activity": "Besucht einen neuen Ort\n(jede Arena oder jede/r neue Arena/Pokéstop)", "points": 1, "cooldown": 30 }, { "activity": "Öffne ein Geschenk/Souvenir", "points": 3, "cooldown": 30 }, { "activity": "Besuche einen interessanten Ort", "points": 3, "cooldown": 30 }].forEach(({ activity, points, cooldown }) => {
+        const tr = create('tr', table);
+        // label
+        let td = create('td', tr);
+        td.innerText = activity;
+        // progress bar
+        td = create('td', tr);
+        const progress = create('progress', td);
+        if (!cooldown) progress.hidden = true;
+        progress.max = cooldown * 60000;
+        progress.value = 0;
+        // button
+        td = create('td', tr);
+        const button = create('button', td);
+        button.innerText = 'Erledigt';
+        // interval
+        function interval() {
+          const i = setInterval(() => {
+            if (progress.value < progress.max - 1) {
+              progress.value += 1;
+            } else {
+              progress.value = progress.max;
+              button.disabled = false;
+              clearInterval(i);
+            }
+          }, 1);
+        }
+        // reset
+        button.addEventListener('click', () => {
+          sum.value = parseInt(sum.value) + points;
+          progress.value = 0;
+          interval();
+          if (cooldown) button.disabled = true;
+        });
+      });
+      const tr = create('tr', table);
+      create('td', tr).innerText = 'Summe';
+      create('td', tr);
+      const sum = create('input', create('td', tr));
+      sum.type = 'number';
+      sum.min = 0;
+      sum.max = 32;
+      sum.value = 0;
+    </script>
+  </body>
+</html>
