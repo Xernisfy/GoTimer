@@ -1,0 +1,42 @@
+[
+  {
+    "activity": "Geht zusammen spazieren (2km)",
+    "points": 3,
+    "cooldown": 0
+  },
+  {
+    "activity": "Gib deinem Kumpel einen Snack",
+    "points": 1,
+    "cooldown": 30
+  },
+  {
+    "activity": "Spielt zusammen",
+    "points": 1,
+    "cooldown": 30
+  },
+  {
+    "activity": "Kämpft gemeinsam",
+    "points": 1,
+    "cooldown": 30
+  },
+  {
+    "activity": "Mach einen Schnappschuss",
+    "points": 1,
+    "cooldown": 30
+  },
+  {
+    "activity": "Besucht einen neuen Ort\n(jede Arena oder jede/r neue Arena/Pokéstop)",
+    "points": 1,
+    "cooldown": 30
+  },
+  {
+    "activity": "Öffne ein Geschenk/Souvenir",
+    "points": 3,
+    "cooldown": 30
+  },
+  {
+    "activity": "Besuche einen interessanten Ort",
+    "points": 3,
+    "cooldown": 30
+  }
+]
