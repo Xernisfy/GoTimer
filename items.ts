@@ -30,11 +30,12 @@ const data: { [name: string]: { [name: string]: number } } = {
     SofortTM: 8,
     LadeTM: 7,
     Sonderbonbon: 2,
+    TopLadeTM: 1,
   },
   Pässe: {
     RaidPass: 0,
-    FernRaidPass: 0,
-    PremiumKampfPass: 3,
+    PremiumKampfPass: 5,
+    FernRaidPass: 4,
     EXRaidPass: 0,
   },
   TeamRocket: {
@@ -52,12 +53,13 @@ const data: { [name: string]: { [name: string]: number } } = {
     MoosLockmodul: 1,
     MagnetLockmodul: 1,
   },
-  Beeren: {
     Himmihbeere: 18,
+  Futter: {
     Nanabbeere: 0,
     Sananabeere: 45,
     GoldeneHimmihbeere: 12,
     SilberneSananabeere: 17,
+    Knursp: 2,
   },
   Brutmaschinen: {
     EiBrutmaschineX: 1,
