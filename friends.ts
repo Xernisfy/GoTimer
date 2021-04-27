@@ -35,10 +35,7 @@ Deno.writeTextFile(
         color: red;
       }
     </style>
-    <script>${await get(
-    "https://raw.githubusercontent.com/kazuhikoarase/qrcode-generator/master/js/qrcode.js",
-    "text",
-  )}</script>
+    <script src="https://kazuhikoarase.github.io/qrcode-generator/js/qrcode.js"></script>
     <script>
       function qr(code, button) {
         const qr = qrcode(1, "H");
