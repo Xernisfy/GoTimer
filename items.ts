@@ -1,4 +1,5 @@
 // https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js
+// https://www.fusioncharts.com/dev/chart-attributes/pie2d
 
 type Category = {
   label: string;
@@ -24,12 +25,13 @@ const data: { [name: string]: { [name: string]: number } } = {
     Sternenstück: 0,
   },
   Kamera: {
-    Kamera: 0,
+    Kamera: 1, // fix
   },
   PowerUps: {
     SofortTM: 0,
     LadeTM: 0,
     Sonderbonbon: 0,
+    TopSofortTM: 0,
     TopLadeTM: 0,
   },
   Pässe: {
@@ -37,10 +39,12 @@ const data: { [name: string]: { [name: string]: number } } = {
     FernRaidPass: 0,
     PremiumKampfPass: 0,
     EXRaidPass: 0,
+    Ticket: 0,
   },
   TeamRocket: {
     MysteriösesTeil: 0,
     RocketRadar: 0,
+    SuperRocketRadar: 0,
   },
   Bälle: {
     Pokéball: 0,
@@ -52,6 +56,7 @@ const data: { [name: string]: { [name: string]: number } } = {
     GletscherLockmodul: 0,
     MoosLockmodul: 0,
     MagnetLockmodul: 0,
+    RegenLockmodul: 0,
   },
   Futter: {
     Himmihbeere: 0,
@@ -62,7 +67,7 @@ const data: { [name: string]: { [name: string]: number } } = {
     Knursp: 0,
   },
   Brutmaschinen: {
-    EiBrutmaschineX: 0,
+    EiBrutmaschineX: 1, // fix
     EiBrutmaschine: 0,
     SuperBrutmaschine: 0,
   },
@@ -74,6 +79,9 @@ const data: { [name: string]: { [name: string]: number } } = {
     UpGrade: 0,
     SinnohStein: 0,
     EinallStein: 0,
+  },
+  Frei: {
+    Frei: 0,
   },
 };
 const labelMargin = 10;
@@ -88,12 +96,12 @@ function createDataSource(obj: any): Array<Category> {
       };
     } else {
       const source: Array<Category> = createDataSource(obj[p]);
-      const value = source.reduce((a, b) => a + b.value, 0);
+      const sum = source.reduce((a, b) => a + b.value, 0);
       return {
         label: p,
-        value: value,
+        value: sum,
         category: source,
-        showLabel: value > labelMargin ? 1 : 0,
+        showLabel: sum > labelMargin ? 1 : 0,
       };
     }
   }).filter((obj) => obj.category || (obj.value !== 0));
